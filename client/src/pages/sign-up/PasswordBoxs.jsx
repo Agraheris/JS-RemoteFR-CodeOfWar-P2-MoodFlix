@@ -1,6 +1,6 @@
 import { useState } from "react";
-import openedEye from "../../assets/images/visibility.png";
-import closedEye from "../../assets/images/visibility_off.png";
+import openedEye from "@harmonia/server/public/assets/images/visibility.png";
+import closedEye from "@harmonia/server/public/assets/images/visibility_off.png";
 
 function PasswordBoxs() {
   const [password, setPassword] = useState();

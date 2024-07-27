@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import SvgPerson from "@harmonia/server/public/assets/images/person.svg";
+import SvgPeople from "@harmonia/server/public/assets/images/people.svg";
 import "../styles/Navbar.css";
-import SvgPerson from "../assets/svg/person.svg";
-import SvgPeople from "../assets/svg/people.svg";
 import SearchBar from "./searchBar/SearchBar";
 
 export default function Navbar() {
