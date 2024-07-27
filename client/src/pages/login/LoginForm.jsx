@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import openedEye from "../../assets/images/visibility.png";
-import closedEye from "../../assets/images/visibility_off.png";
+import openedEye from "@harmonia/server/public/assets/images/visibility.png";
+import closedEye from "@harmonia/server/public/assets/images/visibility_off.png";
 
 function LoginForm() {
   const [visible, setVisible] = useState(false);

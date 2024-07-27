@@ -1,4 +1,4 @@
-import ProfilePicture from "../../assets/svg/profile_picture.svg";
+import ProfilePicture from "@harmonia/server/public/assets/images/profile_picture.svg";
 
 export default function HeaderProfile() {
   return (
