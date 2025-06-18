@@ -1,87 +1,100 @@
-# moodflix
+MoodFlix 🎬
 
-This project uses Harmonia. Harmonia is a framework meant to serve as a foundation for every project following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying a pedagogical tool.
+Une application de recommandation de films basée sur votre humeur
 
-## Setup & Use
+Hackathon Wild Code School - Équipe de 4 développeurs - Formation Wild Code School
+MoodFlix est une plateforme innovante qui recommande des films en fonction de votre état d'esprit du moment. Sélectionnez votre humeur et découvrez des films parfaitement adaptés à vos envies !
 
-**Windows users:** be sure to run these commands in a git terminal to avoid [issues with newline formats](https://en.wikipedia.org/wiki/Newline#Issues_with_different_newline_formats):
+✨ Fonctionnalités
 
-```
-git config --global core.eol lf
-git config --global core.autocrlf false
-```
+Sélection d'humeur : Interface intuitive pour choisir votre état d'esprit
+Recommandations personnalisées : Algorithme de suggestion basé sur l'humeur
+Fiches détaillées : Informations complètes sur chaque film (synopsis, casting, notes)
+Interface responsive : Expérience optimisée sur tous les appareils
+Gestion des favoris : Sauvegardez vos films préférés
 
-- In VSCode, install plugins **Prettier - Code formatter** and **ESLint** and configure them
-- Clone this repo, enter it
-- Run command `npm install`
-- Create environment files (`.env`) in both `server` and `client`: you can copy `.env.sample` files as starters (**don't** delete them)
+🛠️ Technologies utilisées
+Frontend
 
-### Available Commands
+React - Interface utilisateur dynamique
+JavaScript ES6+ - Logique applicative
+CSS3 - Styles et animations
+Vite - Build tool et développement
 
-- `db:migrate` : Run the database migration script
-- `db:seed` : Run the database seed script
-- `dev` : Starts both servers (client + server) in one terminal
-- `dev:client` : Starts the React client
-- `dev:back` : Starts the Express server
-- `lint` : Runs validation tools (will be executed on every _commit_, and refuse unclean code)
+Backend
 
-## FAQ
+Express.js - Serveur web Node.js
+MySQL - Base de données relationnelle
+Node.js - Environnement d'exécution
 
-### Tools
+Outils
 
-- _Concurrently_ : Allows for several commands to run concurrently in the same CLI
-- _Husky_ : Allows to execute specific commands that trigger on _git_ events
-- _Vite_ : Alternative to _Create-React-App_, packaging less tools for a more fluid experience
-- _ESLint_ : "Quality of code" tool, ensures chosen rules will be enforced
-- _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
-- _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
+ESLint - Qualité du code
+Prettier - Formatage du code
+Harmonia - Framework Wild Code School
 
-## Deployment with Traefik
+🚀 Installation et lancement
+Prérequis
 
-> ⚠️ Prerequisites : You must have installed and configured Traefik on your VPS beforehand.
-> https://github.com/WildCodeSchool/vps-traefik-starter-kit/
+Node.js (version 14 ou supérieure)
+MySQL
+npm ou yarn
 
-For deployment, you have to go to `secrets` → app `actions` on the github repo to insert via `New repository secret` :
+Installation
 
-- SSH_HOST : IP address of your VPS
-- SSH_USER : SSH login to your VPS
-- SSH_PASSWORD : SSH connection password to your VPS
+Cloner le repository
 
-And a public variable from the tab `/settings/variables/actions` :
+bashgit clone https://github.com/Agraheris/JS-RemoteFR-CodeOfWar-P2-MoodFlix.git
+cd JS-RemoteFR-CodeOfWar-P2-MoodFlix
 
-- PROJECT_NAME : the name of the project used to create the subdomain.
+Installer les dépendances
 
-> ⚠️ Warning : underscores are not allowed. They can cause trouble with the let's encrypt certificate
+bashnpm install
 
-Use this same tab to add the other environment variables required for the project if any.
+Configuration de l'environnement
 
-Only the server will be accessible. The root path `"/"` will redirect to the dist folder of your client. In order to allow that, please uncomment the line as explained in `server/src/app.js` (Line 102).
-Because the server will also serve the client, the global variable VITE_SERVER_URL will be set with an empty string.
+bash# Copier les fichiers d'exemple
+cp server/.env.sample server/.env
+cp client/.env.sample client/.env
 
-Your url will be ` https://${PROJECT-NAME}.${subdomain}.wilders.dev/`.
+# Éditer les fichiers .env avec vos configurations
 
-### About the database
+Configuration de la base de données
 
-The database is automaticaly deployed with the name of your repo. During the build of the projet (`docker-entry.sh`), the `node migrate.js` command is executed in the server. If you want to seed automaticaly your database using the `seed.js` script, replace the `cd ./server && node ./bin/migrate.js && node index.js` by `cd ./server && node ./bin/migrate.js && node ./bin/seed.js && node index.js`
+bash# Migrer la base de données
+npm run db:migrate
 
-### About public assets (pictures, fonts...)
+# Peupler avec des données d'exemple
+npm run db:seed
 
-Don't use any public folder on your client. This folder won't be accessible online. You may move your public assets in the `server/public` folder. Prefer [static assets](https://vitejs.dev/guide/assets) when possible.
+Lancement de l'application
 
-### About Specific Environment Variables (e.g., Email)
+bash# Développement (client + serveur)
+npm run dev
 
-Students should use the template provided in the `*.env.sample*` file as `<PROJECT_NAME><SPECIFIC_NAME>=<THE_VARIABLE>`.
+# Ou séparément
+npm run dev:client  # Port 3000
+npm run dev:back    # Port 5000
+📱 Utilisation
 
-> ⚠️ **Warning:** The `PROJECT_NAME` should match the one used in the Git public variable.
+Accédez à l'application : Ouvrez votre navigateur sur http://localhost:3000
+Sélectionnez votre humeur : Choisissez parmi les différentes humeurs proposées
+Découvrez des films : Explorez les recommandations personnalisées
+Ajoutez aux favoris : Sauvegardez vos films préférés pour plus tard
 
-To add it during deployment, follow these 2 steps:
+👥 Équipe de développement
+Projet réalisé dans le cadre d'un hackathon à la Wild Code School par une équipe de 4 développeurs passionnés.
+📄 Licence
+Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
+🤝 Contribution
+Les contributions sont les bienvenues ! N'hésitez pas à :
 
-- Add the following variable to the `docker-compose.prod.yml` file (as shown in the example: `PROJECT_NAME_SPECIFIC_NAME: ${PROJECT_NAME_SPECIFIC_NAME}`).
-- Connect to your server via SSH. Open the global `.env` file in Traefik (`nano ./traefik/data/.env`). Add the variable with the correct value and save the file.
-- Afterward, you can initiate automatic deployment. Docker will not refresh during this process.
+Fork le projet
+Créer une branche pour votre fonctionnalité (git checkout -b feature/AmazingFeature)
+Commit vos changements (git commit -m 'Add some AmazingFeature')
+Push vers la branche (git push origin feature/AmazingFeature)
+Ouvrir une Pull Request
 
-### About Logs
 
-If you want to access the logs of your online projet (to follow the deployement or to watch any bug error), connect to your VPS (`ssh user@host`).
-Then, go on your specific project and run  `docker compose logs -t -f`.
+💡 Astuce : Pour une meilleure expérience, utilisez MoodFlix avec vos amis et comparez vos recommandations !
+⭐ N'hésitez pas à mettre une étoile si ce projet vous plaît !
